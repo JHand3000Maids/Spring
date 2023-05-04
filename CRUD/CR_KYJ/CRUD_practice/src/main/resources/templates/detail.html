@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="./css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2>상품 상세</h2>
+    </div>
+
+    <!-- 추가 -->
+    <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+
+    <div>
+        <label for="articleId">게시글 ID</label>
+        <input type="text" id="articleId" name="articleId" class="form-control" value="1" th:value="${article.id}" readonly>
+    </div>
+    <div>
+        <label for="title">제목</label>
+        <input type="text" id="title" name="title" class="form-control" value="제목" th:value="${article.title}" readonly>
+    </div>
+    <div>
+        <label for="content">내용</label>
+        <input type="text" id="content" name="content" class="form-control" value="내용" th:value="${article.content}" readonly>
+    </div>
+    <div>
+        <label for="author">작성자</label>
+        <input type="text" id="author" name="author" class="form-control" value="작성자" th:value="${article.author}" readonly>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    th:onclick="|location.href='@{/articles/{articleId}/edit(articleId=${article.id})}'|"
+                    type="button">상품 수정</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    th:onclick="|location.href='@{/}'|"
+                    type="button">목록으로</button>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+</body>
+</html>
