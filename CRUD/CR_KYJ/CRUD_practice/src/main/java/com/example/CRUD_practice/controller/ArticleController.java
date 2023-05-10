@@ -44,4 +44,17 @@ public class ArticleController {
         model.addAttribute("article", findArticle);
         return "detail";
     }
+
+    @GetMapping("/articles/{id}/edit")
+    public String update_input(@PathVariable Long id, Model model) {
+        Article findArticle = articleService.findById(id);
+        model.addAttribute("article", findArticle);
+        return "update";
+    }
+
+    @PostMapping("/articles/{id}/edit")
+    public String update(@PathVariable Long id, @ModelAttribute Article article) {
+        Article updateArticle = articleService.update(id, article);
+        return "redirect:/articles/" + updateArticle.getId();
+    }
 }

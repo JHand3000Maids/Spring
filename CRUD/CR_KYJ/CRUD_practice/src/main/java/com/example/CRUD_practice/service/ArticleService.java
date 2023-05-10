@@ -20,6 +20,11 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
+    public Article update(Long id, Article article) {
+        articleRepository.update(id, article);
+        return articleRepository.findById(id);
+    }
+
     public Article findById(Long id){
         return articleRepository.findById(id);
     }
