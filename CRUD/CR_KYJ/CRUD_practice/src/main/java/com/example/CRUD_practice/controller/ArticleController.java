@@ -54,7 +54,15 @@ public class ArticleController {
 
     @PostMapping("/articles/{id}/edit")
     public String update(@PathVariable Long id, @ModelAttribute Article article) {
-        Article updateArticle = articleService.update(id, article);
-        return "redirect:/articles/" + updateArticle.getId();
+        // @ModelAttribute : form에서 value값을 가지고 같은 이름의 객체가 있으면 그 값을 Article에 매핑
+
+        articleService.update(id, article);
+        return "redirect:/articles/" + article.getId();
+    }
+
+    @GetMapping("/articles/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        articleService.delete(id);
+        return "redirect:/";
     }
 }

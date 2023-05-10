@@ -20,9 +20,12 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
-    public Article update(Long id, Article article) {
+    public void update(Long id, Article article) {
         articleRepository.update(id, article);
-        return articleRepository.findById(id);
+    }
+
+    public void delete(Long id) {
+        articleRepository.delete(id);
     }
 
     public Article findById(Long id){

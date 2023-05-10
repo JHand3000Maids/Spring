@@ -21,38 +21,38 @@
   <!-- 추가 -->
   <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
 
-  <div>
-    <label for="articleId">게시글 ID</label>
-    <input type="text" id="articleId" name="articleId" class="form-control" value="1" th:value="${article.id}">
-  </div>
-  <div>
-    <label for="title">제목</label>
-    <input type="text" id="title" name="title" class="form-control" value="제목" th:value="${article.title}">
-  </div>
-  <div>
-    <label for="content">내용</label>
-    <input type="text" id="content" name="content" class="form-control" value="내용" th:value="${article.content}">
-  </div>
-  <div>
-    <label for="author">작성자</label>
-    <input type="text" id="author" name="author" class="form-control" value="작성자" th:value="${article.author}">
-  </div>
-
-  <hr class="my-4">
-
-  <div class="row">
-    <div class="col">
-      <button class="w-100 btn btn-primary btn-lg"
-              th:onclick="|location.href='@{/articles/{articleId}/edit(articleId=${article.id})}'|"
-              type="button">게시글 수정</button>
+  <form action="detail.html" th:action th:object="${article}" method="post">
+    <div>
+      <label for="articleId">게시글 ID</label>
+      <input type="text" id="articleId" name="articleId" class="form-control" value="1" th:value="${article.id}" readonly>
     </div>
-    <div class="col">
-      <button class="w-100 btn btn-secondary btn-lg"
-              th:onclick="|location.href='@{/}'|"
-              type="button">목록으로</button>
+    <div>
+      <label for="title">제목</label>
+      <input type="text" id="title" name="title" class="form-control" value="제목" th:value="${article.title}">
     </div>
-  </div>
+    <div>
+      <label for="content">내용</label>
+      <input type="text" id="content" name="content" class="form-control" value="내용" th:value="${article.content}">
+    </div>
+    <div>
+      <label for="author">작성자</label>
+      <input type="text" id="author" name="author" class="form-control" value="작성자" th:value="${article.author}" readonly>
+    </div>
 
+    <hr class="my-4">
+
+    <div class="row">
+      <div class="col">
+        <button class="w-100 btn btn-primary btn-lg"
+                type="submit">저장</button>
+      </div>
+      <div class="col">
+        <button class="w-100 btn btn-secondary btn-lg"
+                th:onclick="|location.href='@{/}'|"
+                type="button">목록으로</button>
+      </div>
+    </div>
+  </form>
 </div> <!-- /container -->
 </body>
 </html>

@@ -29,6 +29,7 @@
                 <th>제목</th>
                 <th>작성자</th>
                 <th>내용</th>
+                <th>삭제</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                 <td><a href="article.html" th:href="@{|/articles/${article.id}|}" th:text="${article.title}">제목</a></td>
                 <td th:text="${article.author}">작성자</td>
                 <td th:text="${article.content}">내용</td>
+                <td><button class="btn btn-primary float-end" th:onclick="|location.href='@{|/articles/${article.id}/delete|}'|" type="button">삭제하기</button></td>
             </tr>
             </tbody>
         </table>
