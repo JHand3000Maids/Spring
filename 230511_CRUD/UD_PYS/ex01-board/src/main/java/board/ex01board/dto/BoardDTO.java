@@ -1,0 +1,38 @@
+package board.ex01board.dto;
+
+import board.ex01board.entity.BoardEntity;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+// DTO(Data Transfer Object) 데이터 전송할 때 사용하는 객체, (VO, Bean 거의 동일한 목적을 가진다 /    Entity)
+@Getter // get 메서드 만들어줌
+@Setter // set 메서드 만들어줌
+@ToString // 필드 값 확인
+@NoArgsConstructor // 기본 생성자
+@AllArgsConstructor // 모든 필드를 매개변수로 하는 생성자
+public class BoardDTO {
+    // 1. CREATE,  DTO -> entity
+    private Long id;
+    private String boardWriter;
+    private String boardPass;
+    private String boardTitle;
+    private String boardContents;
+    private int boardHits; // 조회수
+    private LocalDateTime boardCreatedTime;
+    private LocalDateTime boardUpdatedTime;
+
+    // 2. READ, entity -> DTO
+    public static BoardDTO toBoardDTO(BoardEntity boardEntity) {
+        BoardDTO boardDTO = new BoardDTO();
+        boardDTO.setId(boardEntity.getId());
+        boardDTO.setBoardWriter(boardEntity.getBoardWriter());
+        boardDTO.setBoardPass(boardEntity.getBoardPass());
+        boardDTO.setBoardTitle(boardEntity.getBoardTitle());
+        boardDTO.setBoardContents(boardEntity.getBoardContents());
+        boardDTO.setBoardHits(boardEntity.getBoardHits());
+        boardDTO.setBoardCreatedTime(boardEntity.getCreatedTime());
+        boardDTO.setBoardUpdatedTime(boardEntity.getUpdatedTime());
+        return boardDTO;
+    }
+}
